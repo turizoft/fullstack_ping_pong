@@ -3,7 +3,7 @@
     <div class="column">
       <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: "ui large form #{flash[:error].present? ? 'error' : ''}" }) do |f| %>
 
-        <h2><%= image_tag 'thick_logo_dark_80a', class: 'ui mini image' %> Forgot your password?</h2>
+        <h2><%= image_tag asset_path('thick_logo_dark_80a'), class: 'ui mini image' %> Forgot your password?</h2>
 
         <div class="ui stacked segment">
           <div class="field">
