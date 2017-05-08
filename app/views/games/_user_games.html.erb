@@ -1,0 +1,22 @@
+<% @games.each do |game| %>
+<div class="ui card">
+  <div class="content">
+    <div class="header">
+      <%= content_tag :div, class: 'ui horizontal label ' << match_result_color(game.match_result(current_user)) do %>
+        <%= game.match_result(current_user) %>
+      <% end %>
+      <%= game.rival(current_user).username %>
+    </div>
+    <div class="description">
+      <div class="match-result">
+        <a class="ui big black label"><%= game.user_score(current_user) %></a> - <span><a class="ui big black label"><%= game.rival_score(current_user) %></a></span></b>
+      </div>
+    </div>
+  </div>
+  <div class="extra content">
+    <span class="right floated">
+      <span><%= time_ago_in_words(game.created_at) %> ago</span>
+    </span>
+  </div>
+</div>
+<% end %>

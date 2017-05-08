@@ -1,0 +1,108 @@
+/* colors */
+
+//gray scale
+$gray-2: #222222;
+$gray-4: #444444;
+$gray-6: #606060;
+$gray-7: #707070;
+$gray-8: #888888;
+$gray-a: #a0a0a0;
+$gray-b: #bbbbbb;
+$gray-c: #cccccc;
+$gray-d: #dddddd;
+$gray-e: #eeeeee;
+$gray-f4: #f4f4f4;
+$gray-f8: #f8f8f8;
+$gray-fa: #fafafa;
+$gray-fc: #fcfcfc;
+
+//primary colors
+$cyan: #00a2c1;
+$green: #4cc848;
+$orange: #f3a005;
+$red: #ed5124;
+$yellow: #d3d002;
+$blue: #24a4dd;
+
+//component colors
+$primary: #39ba6a;
+$dprimary: darken($primary, 10%);;
+$lprimary: lighten($primary, 5%);
+$dark: darken($blue, 20%);
+$full-text: $gray-2;
+$half-text: $gray-7;
+$light-text: $gray-a;
+$body-bg: white;
+$sidebar-bg: $cyan;
+$alert: $red;
+$success: $green;
+
+
+
+/* variables */
+
+$topbar-height: 52.63px;
+
+$global-radius: 0.28571429rem;
+$global-font-size: 100% !default;
+
+
+
+/* z-index */
+
+
+
+
+/* css framework */
+
+@import "semantic-ui";
+@import '_semantic_ui_overwrite';
+
+
+
+/* base elements */
+
+body {
+  padding-top: $topbar-height;
+}
+
+* { outline: none; }
+
+a {
+  color: $primary;
+  cursor: pointer; 
+  &:hover {
+    text-decoration: none;
+  }
+  &:hover, &:focus:not(:active):hover {
+    color: $lprimary;
+  }
+  &:active {
+    color: $dprimary;
+  }
+  &:focus:not(:active) {
+    color: $primary;
+  }
+}
+
+img { width: 100%; }
+
+p.blank {
+  color: $light-text;
+  font-size: 18px;
+  margin: 32px 0;
+}
+
+#notification-area {
+  display: block;
+  left: 30%;
+  position: fixed;
+  width: 40%;
+  z-index: 100;
+  .ui.message {
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
+    margin-top: 16px;
+  }
+}
+
+

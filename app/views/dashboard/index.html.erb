@@ -1,0 +1,88 @@
+<div id="dashboard-index-content" class="dashboard-content">
+  <div class="ui container">
+    <div class="ui stacked segment">
+      <div class="ui grid">
+        <!-- main content -->
+        <div class="twelve wide column">
+          <h1>
+            <a class="ui massive green circular label"><%= current_user.initial %></a> 
+            <span class="main-title"><%= current_user.username %></span>
+            <span>&middot;</span>
+            <%= link_to 'Add new game', new_game_path %>
+          </h1>
+          <div class="ui statistics">
+            <div class="inverted statistic">
+              <div class="value">
+                <%= ranking_text(current_user.elo_ranking) %>
+              </div>
+              <div class="label">
+                Ranking
+              </div>
+            </div>
+            <div class="statistic">
+              <div class="value">
+                <%= current_user.elo_points %>
+              </div>
+              <div class="label">
+                Ranking Points
+              </div>
+            </div>
+            <div class="statistic">
+              <div class="value">
+                <i class="trophy icon"></i>
+              </div>
+              <div class="label">
+                <%= current_user.total_wins %> wins
+              </div>
+            </div>
+            <div class="statistic">
+              <div class="value">
+                <%= current_user.win_ratio %>%
+              </div>
+              <div class="label">
+                Win ratio
+              </div>
+            </div>
+          </div>
+
+          <h2>
+            <span>Your last games</span>
+            <span>&middot;</span>
+            <%= link_to 'View all', games_path %>
+          </h2>
+          <% if @games.size > 0 %>
+            <div id="user-games" class="ui four cards">
+              <%= render 'games/user_games' %>
+            </div>
+          <% else %>
+            <p class="blank">You haven't logged any game yet.</p>
+          <% end %>
+        </div>
+
+        <!-- sidebar -->
+        <div class="four wide column">
+          <h2>Current ranking</h2>
+          <table class="ui very basic celled table">
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>User</th>
+                <th>Points</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @ranked_users.each do |user| %>
+              <tr>
+                <td><%= ranking_text(user.elo_ranking) %></td>
+                <td><%= user.username %></td>
+                <td><%= user.elo_points %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+          <h4><%= link_to 'See full ranking table', dashboard_ranking_path %></h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

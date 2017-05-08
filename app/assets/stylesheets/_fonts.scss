@@ -1,0 +1,115 @@
+/* custom fonts */
+
+@font-face {
+  font-family: OverpassBold;
+  src: font-url('Overpass_Bold-webfont.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: OpenSansLight;
+  src: font-url('OpenSansLight.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: OpenSans;
+  src: font-url('OpenSansRegular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: OpenSansSemibold;
+  src: font-url('OpenSansSemibold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: LatoLight;
+  src: font-url('LatoLight.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: LatoRegular;
+  src: font-url('LatoRegular.ttf') format('truetype');
+}
+
+/* force chrome to render svg */
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  @font-face {
+    font-family: OverpassBold;
+    src: font-url('Overpass_Bold-webfont.svg#overpassbold') format('svg');
+  }
+  @font-face {
+    font-family: OpenSansLight;
+    src: font-url('OpenSansLight.svg') format('svg');
+  }
+
+  @font-face {
+    font-family: OpenSansRegular;
+    src: font-url('OpenSansRegular.svg') format('svg');
+  }
+}
+
+
+/* font families */
+
+$open-sans-light : OpenSansLight, LatoLight, Helvetica, Arial, sans-serif;
+$open-sans-normal : OpenSans, LatoRegular, Helvetica, Arial, sans-serif;
+$open-sans-semibold : OpenSansSemibold, LatoRegular, Helvetica, Arial, sans-serif;
+$lato-light : LatoLight, Helvetica, Arial, sans-serif;
+$lato-normal : LatoRegular, Helvetica, Arial, sans-serif;
+$overpass-bold: OverpassBold, Helvetica, Arial, sans-serif;
+
+
+
+/* font mixins */
+
+@mixin base-font($size, $weight: normal, $color: $full-text, $style: normal) {
+  color: $color;
+  font-size: rc($size);
+  font-style: $style;
+  font-weight: $weight;
+  line-height: rc($size * 1.25);
+}
+
+@mixin sans($size: rc(18), $weight: normal, $color: $full-text, $style: normal) {
+  @include base-font($size, $weight, $color, $style);
+  @if $weight == 300 { font-family: $lato-light; }
+  @if $weight == normal { font-family: $lato-normal; }
+}
+
+@mixin open-sans($size: rc(40), $weight: normal, $color: $full-text, $style: normal) {
+  @include base-font($size, $weight, $color, $style);
+  @if $weight == 300 { font-family: $open-sans-light; }
+  @if $weight == normal { font-family: $open-sans-normal; }
+}
+
+@mixin overpass($size: rc(18), $weight: normal, $color: $full-text, $style: normal) {
+  @include base-font($size, $weight, $color, $style);
+  font-family: $overpass-bold;
+}
+
+
+/* utility mixins */
+
+@mixin title($color: $primary) {
+  @include sans(28, 300, $color);
+  line-height: rc(24);
+}
+
+@mixin subtitle($color: $light-text) {
+  @include sans(24, 300, $color);
+  line-height: rc(24);
+}
+
+@mixin ellipsis {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+@mixin uppercase-first {
+  &:first-letter {
+    text-transform: uppercase;
+  }
+}
+
+.uppercased-first { @include uppercase-first; }

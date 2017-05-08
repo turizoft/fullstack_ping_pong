@@ -1,0 +1,29 @@
+<div class="ui fixed inverted menu">
+  <div class="ui container">
+    <a href="/" class="header item">
+      <%= image_tag 'thick_logo', alt: 'Ping Pong' %>&nbsp;&nbsp;&nbsp;Ping Pong
+    </a>
+
+    <% if user_signed_in? %>
+      <%= link_to 'My games', games_path, class: 'item' %>
+      <%= link_to 'Leaderboard', dashboard_ranking_path, class: 'item' %>      
+    <% end %>
+
+    <div class="right menu">
+      <% if user_signed_in? %>
+        <div class="ui simple dropdown item">
+        <%= current_user.username %> <i class="dropdown icon"></i>
+        <div class="menu">
+          <%= link_to 'Edit profile', edit_user_registration_path, class: 'item' %>
+          <%= link_to 'Add new game', new_game_path, class: 'item' %>
+          <div class="divider"></div>
+          <%= link_to "Logout", destroy_user_session_path, :method => :delete, class: 'item' %> 
+        </div>
+      <% else %>
+        <%= link_to 'Log in', new_user_session_path, class: 'item' %><br />
+        <%= link_to 'Sign up', new_user_registration_path, class: 'item' %><br />
+      <% end %>
+    </div>
+    </div>
+  </div>
+</div>

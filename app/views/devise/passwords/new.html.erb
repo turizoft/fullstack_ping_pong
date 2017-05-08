@@ -1,0 +1,26 @@
+<div id="edit-password-content" class="auth-content">
+  <div class="ui middle aligned center aligned grid">
+    <div class="column">
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: "ui large form #{flash[:error].present? ? 'error' : ''}" }) do |f| %>
+
+        <h2><%= image_tag 'thick_logo_dark_80a', class: 'ui mini image' %> Forgot your password?</h2>
+
+        <div class="ui stacked segment">
+          <div class="field">
+            <div class="ui input">
+              <%= f.email_field :email, placeholder: 'E-mail', autofocus: true %>
+            </div>
+            <%= field_errors f, :email, 'black left pointing' %>
+          </div>
+
+          <div class="actions">
+            <%= f.submit 'Send me reset password instructions', class: 'ui fluid big blue submit button' %>
+          </div>
+          <div class="ui divider"></div>
+
+          <%= render "devise/shared/links" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

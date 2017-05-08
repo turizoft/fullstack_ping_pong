@@ -1,0 +1,49 @@
+<div id="profile-edit-content" class="auth-content">
+  <div class="ui container">
+    <div class="ui stacked segment">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "ui large form #{flash[:error].present? ? 'error' : ''}" }) do |f| %>
+
+        <h2>Edit your profile</h2>
+      
+        <div class="field">
+          <%= f.label :email %>
+          <div class="ui input">
+            <%= f.email_field :email, autofocus: true %>
+          </div>
+        </div>
+
+        <div class="field">
+          <%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
+          <div class="ui input">
+            <%= f.password_field :password, autocomplete: "off" %>
+          </div>
+          <%= field_errors f, :password, 'black left pointing' %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password_confirmation %>
+          <div class="ui input">
+            <%= f.password_field :password_confirmation, autocomplete: 'off' %>
+          </div>
+          <%= field_errors f, :password_confirmation, 'black left pointing' %>
+        </div>
+
+        <div class="field">
+          <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i>
+          <div class="ui input">
+            <%= f.password_field :current_password, autocomplete: "off" %>
+          </div>
+          <%= field_errors f, :current_password, 'black left pointing' %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit 'Update profile', class: 'ui fluid big blue submit button' %>
+        </div>
+
+        <div class="ui divider"></div>
+
+        Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %>
+      <% end %>
+    </div>
+  </div>
+</div>

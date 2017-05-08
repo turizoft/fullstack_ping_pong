@@ -1,0 +1,161 @@
+/* dashboard specific rules */
+
+#dashboard-index-content {
+  .ui.statistics {
+    padding: 32px 0 16px;
+    .statistic {
+      margin-right: 0;
+      padding: 32px;
+      .value {
+        color: rgba(255, 255, 255, 1);
+      }
+      .label {
+        color: rgba(255, 255, 255, 0.8);
+      }
+      &:nth-child(1) {
+        background: lighten($cyan, 5%);
+      }
+      &:nth-child(2) {
+        background: $cyan;
+      }
+      &:nth-child(3) {
+        background: darken($cyan, 5%);
+      }
+      &:nth-child(4) {
+        background: darken($cyan, 10%);
+      }
+    }
+  }
+}
+
+#dashboard-ranking-content {
+  .ui.table {
+    margin-top: 32px;
+  }
+}
+
+#user-games {
+  .ui.card {
+    .header {
+      border-bottom: 1px solid $gray-d;
+      margin: 0 -14px;
+      overflow: hidden;
+      padding: 0 8px 8px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .ui.horizontal.label {
+      vertical-align: top;
+    }
+    .match-result {
+      padding: 16px 0 8px;
+      text-align: center;
+      span {
+        opacity: 0.75;
+      }
+    }
+  }
+}
+
+#games-index-content {
+  #user-games {
+    margin-top: 16px;
+  }
+}
+
+#games-new-content {
+  h1 {
+    text-align: center;
+  }
+  .ui.grid {
+    padding-top: 128px;
+  }
+  .ui.form {
+    width: 50%;
+    .scores {
+      .field {
+        display: inline-block;
+        margin: 0;
+        vertical-align: middle;
+        .label.bottom.pointing {
+          bottom: 100%;
+          left: 0;
+          position: absolute;
+          right: 0;
+          top: auto;
+          z-index: 10;
+        }
+        .label.top.pointing {
+          bottom: auto;
+          left: 0;
+          position: absolute;
+          right: 0;
+          top: 100%;
+          z-index: 10;
+        }
+      }
+      .middle {
+        color: $gray-a;
+        display: inline-block;
+        font-size: 120px;
+        height: 200px;
+        line-height: 200px;
+        vertical-align: top;
+      }
+      input[type="text"] {
+        border: 3px solid $half-text;
+        font-family: 'Oswald', sans-serif;
+        font-size: 120px;
+        line-height: 120px;
+        padding: 8px;
+        text-align: center;
+        width: auto;
+      }
+      .ui.dropdown {
+        display: block;
+        min-width: 0;
+      }
+      label {
+        font-size: 14px;
+        height: 38px;
+        line-height: 38px;
+      }
+      label, .ui.dropdown {
+        margin: 8px 0 0;
+      }
+    }
+    .actions {
+      margin: 80px auto 0;
+      width: 60%;
+    }
+  }
+}
+
+.dashboard-content {
+  .ui.container {
+    
+  }
+  .ui.stacked.segment {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    min-height: 680px;
+    margin-bottom: 32px;
+    margin-top: -1px;
+    padding: 32px;
+  }
+  h1 {
+    color: $half-text;
+    font-family: 'Oswald', sans-serif;
+    font-size: 32px;
+    margin-bottom: 0;
+    a, span {
+      vertical-align: middle;
+    }
+    .main-title {
+      text-transform: uppercase;  
+    }
+  }
+  h2 {
+    color: $half-text;
+  }
+}

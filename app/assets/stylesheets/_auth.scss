@@ -1,0 +1,56 @@
+/* authentication specific rules */
+
+body {
+  background: $gray-e;
+}
+
+.auth-content {
+  height: 100%;
+  & > .grid {
+    height: 100%;
+    & > .column {
+      max-width: 450px;
+    }
+  }
+  .image {
+    img {
+      display: inline-block;  
+    }
+  }
+  .ui.form {
+    h2 {
+      color: $half-text;
+      img {
+        display: inline-block;
+        margin: -6px 4px 0 0;
+        opacity: 0.5;
+      }
+    }
+    .field {
+      .ui.input input {
+        width: 100%;
+      }
+      .ui.checkbox {
+        display: block;
+        text-align: left;
+        label {
+          color: $half-text;
+        }
+      }
+    }
+  }
+}
+
+#profile-edit-content {
+  .ui.stacked.segment {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    margin-top: -1px;
+  }
+  .field, .actions {
+    width: 50%;
+  }
+  .actions {
+    margin-top: 32px;
+  }
+}

@@ -1,0 +1,30 @@
+<div id="games-new-content" class="dashboard-content">
+  <div class="ui container">
+    <div class="ui stacked segment">
+      <h1>Add a new game</h1>
+      
+      <div class="ui centered grid">
+        <%= form_for(@game, html: { method: :post, class: "ui form #{flash[:error].present? ? 'error' : ''}" }) do |f| %>
+          <div class="scores">
+            <div class="field">
+              <%= field_errors f, :player1_score, 'black bottom pointing' %>
+              <%= f.text_field :player1_score, placeholder: 0, size: 2  %>
+              <label><%= current_user.username %> (you)</label>
+            </div>
+            <span class="middle">-</span>
+            <div class="field">
+              <%= field_errors f, :player2_score, 'black bottom pointing' %>
+              <%= f.text_field :player2_score, placeholder: 0, size: 2  %>
+              <%= field_errors f, :player2_id, 'black top pointing' %>
+              <%= f.collection_select :player2_id, @rivals, :id, :username, { include_blank: true }, { class: 'ui search dropdown' } %>
+            </div>
+          </div>
+
+          <div class="actions">
+            <%= f.submit 'Create game', class: 'ui fluid huge blue submit button' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

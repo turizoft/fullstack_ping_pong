@@ -1,0 +1,19 @@
+<div id="games-index-content" class="dashboard-content">
+  <div class="ui container">
+    <div class="ui stacked segment">
+      <h1>
+        <span class="main-title">My games</span>
+        <span>&middot;</span>
+        <%= link_to 'Add new game', new_game_path %>
+      </h1>
+
+      <% if @games.size > 0 %>
+        <div id="user-games" class="ui five cards">
+          <%= render 'user_games' %>
+        </div>
+      <% else %>
+        <p class="blank">You haven't logged any game yet.</p>
+      <% end %>      
+    </div>
+  </div>
+</div>

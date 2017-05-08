@@ -1,0 +1,31 @@
+<div id="dashboard-ranking-content" class="dashboard-content">
+  <div class="ui container">
+    <div class="ui stacked segment">
+      <h1>Current Ping Pong ranking</h1>
+      <table class="ui celled table">
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>User</th>
+            <th>Points</th>
+            <th>Played games</th>
+            <th>Wins</th>
+            <th>Win Ratio</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @ranked_users.each do |user| %>
+            <%= content_tag :tr, class: active_if_current_user(user, current_user) do %>
+              <td><%= ranking_text(user.elo_ranking) %></td>
+              <td><%= user.username %></td>
+              <td><%= user.elo_points %></td>
+              <td><%= user.total_games %></td>
+              <td><%= user.total_wins %></td>
+              <td><%= user.win_ratio %></td>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
