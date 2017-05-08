@@ -13,7 +13,7 @@ class User < ApplicationRecord
 
   # Callbacks
   before_save :format_attributes
-  after_create 'self.class.update_rankings!'
+  after_create :self_update_rankings!
 
   def initial
     username[0].upcase
@@ -35,6 +35,10 @@ class User < ApplicationRecord
     User.find_each(batch_size: 1000) do |user|
       user.update_attributes(elo_ranking: User.order(elo_points: :desc, username: :asc).pluck(:id).index(user.id) + 1)
     end
+  end
+
+  def self_update_rankings!
+    self.class.update_rankings!
   end
 
   private
